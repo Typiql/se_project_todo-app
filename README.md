@@ -1,17 +1,11 @@
-# Simple Todo App
+# ToDoList
 
-Give a brief description of the project here. Feel free to give it a different name.
+This is the ToDoList project created for the TripleTen bootcamp.
 
-## Functionality
+## Link to Website
 
-Give a more detailed explanation of the project and its functionality.
+You can view the live version of the project here:
 
-## Technology
+[ToDoList - Live Demo](https://typiql.github.io/se_project_todo-app/)
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
-
-## Deployment
-
-This project is deployed on GitHub Pages:
-
-- ADD LINK HERE
+### Created by Alex Johnson
