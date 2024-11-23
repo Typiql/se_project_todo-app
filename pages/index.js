@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 import { initialTodos, validationConfig } from "../utils/constants.js";
 import Todo from "../components/Todo.js";
 import FormValidator from '../components/FormValidator.js';
-import Section from "../components/section.js";
+import Section from "../components/Section.js";
 import PopupWithForm from '../components/PopupWithForm.js';
 import TodoCounter from '../components/TodoCounter.js';
 
@@ -14,22 +14,8 @@ const todosList = document.querySelector(".todos__list");
 const todoCounter = new TodoCounter(initialTodos, ".counter__text");
 
 const generateTodo = (data) => {
-  const todo = new Todo(data, "#todo-template");
-  const todoElement = todo.getView();
-
-  const checkbox = todoElement.querySelector(".todo__completed");
-  checkbox.addEventListener("change", (event) => {
-    todoCounter.updateCompleted(event.target.checked ? true : false);
-  });
-
-  const deleteButton = todoElement.querySelector(".todo__delete-btn");
-  deleteButton.addEventListener("click", () => {
-    todoElement.remove();
-    todoCounter.updateTotal(false); 
-    if (checkbox.checked) todoCounter.updateCompleted(false);
-  });
-
-  return todoElement;
+  const todo = new Todo(data, "#todo-template", todoCounter);
+  return todo.getView();
 };
 
 const section = new Section({
@@ -38,7 +24,7 @@ const section = new Section({
     const todoElement = generateTodo(item);
     section.addItem(todoElement);
   },
-  containerSelector: todosList,
+  containerSelector: ".todos__list",
 });
 
 section.renderItems();
@@ -47,7 +33,7 @@ const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
 
 const addToDoPopup = new PopupWithForm({
-  popupSelector: addToDoPopupElement,
+  popupSelector: "#add-todo-popup",
   handleFormSubmit: () => {
     const name = addTodoForm.name.value;
     const dateInput = addTodoForm.date.value;
