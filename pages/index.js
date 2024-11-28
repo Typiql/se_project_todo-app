@@ -35,8 +35,8 @@ newTodoValidator.enableValidation();
 
 const addToDoPopup = new PopupWithForm({
   popupSelector: "#add-todo-popup",
-  handleFormSubmit: () => {
-    const { name, date } = addToDoPopup._getInputValues();
+  handleFormSubmit: (inputValues) => {
+    const { name, date } = inputValues
     const dateObject = new Date(date);
     dateObject.setMinutes(dateObject.getMinutes() + dateObject.getTimezoneOffset());
     const newTodo = {
